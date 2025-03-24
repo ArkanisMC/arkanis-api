@@ -1,11 +1,14 @@
 package org.arkanis.api.profile;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 import java.util.UUID;
 
 public interface IProfile {
-    UUID getId();
-    String getName();
+
+    @NotNull UUID getId();
+    @NotNull String getName();
 
     int getCoins();
     int getCredits();
@@ -13,8 +16,6 @@ public interface IProfile {
     int getLevel();
     double getXP();
 
-    void sendMessage(String message);
-    default void sendMessage(String... messages) {
-        Arrays.stream(messages).forEach(this::sendMessage);
-    }
+    void sendMessage(@NotNull String first, @NotNull String... extra);
+
 }
