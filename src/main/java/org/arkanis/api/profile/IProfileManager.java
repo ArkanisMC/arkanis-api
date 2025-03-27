@@ -1,18 +1,24 @@
 package org.arkanis.api.profile;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Unmodifiable;
+
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public interface IProfileManager {
-    Map<UUID, IProfile> getLocalCache();
 
-    IProfile getProfile(UUID uuid);
-    IProfile getProfile(String name);
+    @NotNull Map<@NotNull UUID, @NotNull IProfile> getLocalCache();
 
-    List<IProfile> getProfiles();
+    @Nullable IProfile getProfile(@NotNull UUID uuid);
+    @Nullable IProfile getProfile(@NotNull String name);
 
-    void saveProfile(IProfile profile);
-    void updateProfile(IProfile profile);
-    void deleteProfile(IProfile profile);
+    @Unmodifiable Collection<@NotNull IProfile> getProfiles();
+
+    void saveProfile(@NotNull IProfile profile);
+    void updateProfile(@NotNull IProfile profile);
+    void deleteProfile(@NotNull IProfile profile);
 }
